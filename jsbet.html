@@ -1,9 +1,23 @@
 <html>
   <head>
+    <title>JS Betting Game</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="favicon.ico" rel="shortcut icon">
     <script src="jquery-1.11.1.min.js"></script>
     <script src="jsbet.js"></script> 
   </head>
   <body>
-    <h1>Welcome to the JS Betting Game!</h1>
+    <h1 class="title">Welcome to the JS Betting Game</h1>
+
+    <h3 class="totalCash">Your total cash is: $<span class="totalMoney"></span></h3>
+    <form>
+      <label for="placeBet">Place Your Bet!</label>
+      <input type="button" name="bet5" value="$5" id="bet5">
+      <input type="button" name="bet10" value="$10" id="bet10">
+      <input type="number" name="numPrompt" placeholder="Pick a number between 1-10!" id="numPrompt">
+      <input type="button" name="start" value="Start" id="submit">
+    </form>
+
+    <div class="details"></div>
   </body>
 </html>

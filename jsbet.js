@@ -5,20 +5,43 @@ $(document).ready(function(){
   var startingCash = 100;
 
 // Prompt Variables //
-  var numBet = prompt("Enter a bet between $5-$10!", "Enter your bet!");
-  var numPrompt = prompt("Enter a number between 1-10!", "Pick a number!");
+  var playerBet = 0;
+  var numBet5 = 5;
+  var numBet10 = 10;
 
-  var gameNum = randNum;
-    if (numPrompt == gameNum + 1 || numPrompt == gameNum - 1) {
-      alert("You were one number off. Your current money is" + " " + startingCash + ".");
-      startingCash == startingCash;
-    }
-      else if (numPrompt == gameNum) {
-        startingCash == (startingCash += (numBet * 2));
-          alert("You got it! Your current money is" + " " + startingCash + ".");
-      } 
-        else {
-          alert("Sorry, that was the wrong number. Your current money is" + " " + startingCash + ".")
-          startingCash == (startingCash -= numBet);
+  $('.totalMoney').text('100');
+
+    $('#bet5').on('click', function(e){
+      playerBet = numBet5;
+      $(this).toggleClass("active");
+    });
+
+    $('#bet10').on('click', function(e){
+      playerBet = numBet10;
+      $(this).toggleClass("active");
+    });
+
+    $('#submit').on('click', function(e){
+      var selectNum = $('#numPrompt').val();
+        if (playerBet != 0 && selectNum != 0) {
+          var gameNum = randNum;
+            if (selectNum == gameNum + 1 || selectNum == gameNum - 1) {
+              startingCash == startingCash;
+              $('.details').html('<h4><em>You were one number off!</em></h4>');
+            }
+            else {
+              if (selectNum == gameNum) {
+                startingCash == (startingCash += (playerBet * 2));
+                $('.totalMoney').text(startingCash);
+              }
+              else {
+                startingCash == (startingCash -= playerBet);
+                $('.totalMoney').text(startingCash);
+              }
+            }
         }
+        else {
+          alert("You did not place a bet or select a valid number!");
+        }
+    });
 });
